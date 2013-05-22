@@ -1,8 +1,8 @@
 # Django settings for myFirstSite project.
 
 # settings.py: Settings/configuration for this Django project.
-# Take a look at it to get an idea of the types of settings
-# available, along with their default values.
+# Take a look at it to get an idea of the types of settings available,
+# along with their default values.
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

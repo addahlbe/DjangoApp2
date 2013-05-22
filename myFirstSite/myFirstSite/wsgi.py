@@ -13,9 +13,8 @@ middleware here, or combine a Django application with an application of another
 framework.
 
 """
-
-# wsgi.py: An entry-point for WSGI-compatible webservers to serve your project.
-# See How to deploy with WSGI (https://docs.djangoproject.com/en/1.4/howto/deployment/wsgi/)
+# wsgipy: An entery-point for WSGI-compatible webservers to serve your project.
+# See How to deplot with WSGI (https://docs.djangoproject.com/en/1.4/howto/deployment/wsgi/)
 # for more details.
 
 import os
