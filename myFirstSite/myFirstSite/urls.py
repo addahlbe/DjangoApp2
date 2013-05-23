@@ -3,6 +3,8 @@ from django.conf.urls import (
     include,
     url
 )
+from django.contrib import admin
+admin.autodiscover()
 # The patterns function gets passed only a single argument- the empty string
 #       (The string can be used to supply a common prefix for view functions)
 from myFirstSite.views import (
@@ -27,13 +29,10 @@ urlpatterns = patterns(
     # Regex: ^ = require that the pattern matches the start of the string
     # Regex: $ = require that the pattern matches the end of the string
     # Regex: \d{1,2} means require atleast 1 or 2 digits, i.e. 1-99
-    # Examples:
-    # url(r'^$', 'myFirstSite.views.home', name='home'),
-    # url(r'^myFirstSite/', include('myFirstSite.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', include(admin.site.urls)),
 )

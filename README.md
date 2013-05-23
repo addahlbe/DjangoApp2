@@ -16,7 +16,17 @@ django-admin.py startproject sitename
 To run the project:
 python manage.py runserver
 
+Print a view of your tables in database language form:
+python manage.py sqlall books
 
+Commiting the SQL to the database:
+python manage.py syncdb
+
+Instead of sqlite3 filename, or whatever db you use python can auto generate it:
+python manage.py dbshell
+
+Add things to database, or view them:
+python manage.py shell
 
 Regex Tips when configuring URLS:
 
