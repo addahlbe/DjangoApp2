@@ -12,6 +12,8 @@ from myFirstSite.views import (
     current_datetime,
     hours_ahead
 )
+# ^ above can be imported like below, then you don't have to type out each method.
+from books import views
 # urls.py: The URLs for this Django project. Think of this
 # as the "table of contents" of your Django-powered site.
 
@@ -26,6 +28,7 @@ urlpatterns = patterns(
     url(r'^time/$', current_datetime),
     url(r'^another-time-page/$', current_datetime),
     url(r'^time/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^search/$', views.search),
     # Regex: ^ = require that the pattern matches the start of the string
     # Regex: $ = require that the pattern matches the end of the string
     # Regex: \d{1,2} means require atleast 1 or 2 digits, i.e. 1-99
