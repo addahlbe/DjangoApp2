@@ -4,7 +4,6 @@ from django.conf.urls import (
     url
 )
 from django.contrib import admin
-admin.autodiscover()
 # The patterns function gets passed only a single argument- the empty string
 #       (The string can be used to supply a common prefix for view functions)
 from myFirstSite.views import (
@@ -19,8 +18,22 @@ from books import views
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
-# admin.autodiscover()
+admin.autodiscover()
 
+#####
+# If you have multiple views, like we do, rather than importing differently,
+# you can do it via string like this:
+# from django.conf.urls.defaults import *
+# urlpatterns = patterns('mysite.views',
+#     (r'^hello/$', 'hello'),
+#     (r'^time/$', 'current_datetime'),
+#     (r'^time/plus/(\d{1,2})/$', 'hours_ahead'),
+# )
+
+# urlpatterns += patterns('weblog.views',
+#     (r'^tag/(\w+)/$', 'tag'),
+# )
+#####
 
 urlpatterns = patterns(
     '',
@@ -29,6 +42,8 @@ urlpatterns = patterns(
     url(r'^another-time-page/$', current_datetime),
     url(r'^time/plus/(\d{1,2})/$', hours_ahead),
     url(r'^search/$', views.search),
+    url(r'^contact/$', views.contact),
+    url(r'^contact/thanks/$', 'contact_thanks.html'),
     # Regex: ^ = require that the pattern matches the start of the string
     # Regex: $ = require that the pattern matches the end of the string
     # Regex: \d{1,2} means require atleast 1 or 2 digits, i.e. 1-99

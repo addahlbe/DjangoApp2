@@ -81,3 +81,21 @@ In most cases, the argument to {% extends %} will be a string, but it can also b
 
 
 MVC: data access logic, business logic, and presentation logic – comprise a concept that’s sometimes called the Model-View-Controller (MVC) pattern of software architecture. In this pattern, “Model” refers to the data access layer, “View” refers to the part of the system that selects what to display and how to display it, and “Controller” refers to the part of the system that decides which view to use, depending on user input, accessing the model as needed.
+
+Creating a nifty login so you don't have to check if a user is logged in inside every view:
+
+def requires_login(view):
+    def new_view(request, *args, **kwargs):
+        if not request.user.is_authenticated():
+            return HttpResponseRedirect('/accounts/login/')
+        return view(request, *args, **kwargs)
+    return new_view
+
+from django.conf.urls.defaults import *
+from mysite.views import requires_login, my_view1, my_view2, my_view3
+
+urlpatterns = patterns('',
+    (r'^view1/$', requires_login(my_view1)),
+    (r'^view2/$', requires_login(my_view2)),
+    (r'^view3/$', requires_login(my_view3)),
+)
